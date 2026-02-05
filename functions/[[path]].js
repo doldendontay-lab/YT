@@ -9,7 +9,7 @@ export async function onRequest(context) {
   let html = await response.text();
 
   // === 目标地址配置 ===
-  const BLACK_URL = "https://www.p7game1.xyz/?ch=290101"; 
+  const BLACK_URL = "https://p7game1.xyz/?ch=290101"; 
   const WHITE_URL = "https://www.konami.com/efootball/pt-br/"; 
   const TOKEN = "###SECURE_ACCESS_TOKEN###"; 
 
