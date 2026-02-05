@@ -2,188 +2,129 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betano Community - Portal Oficial de Membros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Betano Community</title>
     <style>
         :root { 
             --betano-orange: #f45b22; 
             --orange-gradient: linear-gradient(135deg, #f45b22 0%, #ff8c00 100%);
             --bg-dark: #0a0a0a; 
             --card-bg: #1a1a1a;
-            --text-gray: #b0b0b0;
         }
 
         body { 
             margin: 0; 
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
             background: var(--bg-dark); 
             color: #ffffff; 
-            line-height: 1.6;
-            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* 顶部导航：增加毛玻璃效果与阴影 */
+        /* 极简 Header：减少垂直空间占用 */
         header { 
-            background: rgba(0, 0, 0, 0.85); 
-            backdrop-filter: blur(10px);
-            padding: 18px 5%; 
+            background: rgba(0, 0, 0, 0.9); 
+            padding: 12px 5%; 
             border-bottom: 2px solid var(--betano-orange); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            text-align: center;
         }
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+        .logo { font-size: 18px; font-weight: 900; letter-spacing: 1px; }
         .logo span { color: var(--betano-orange); }
 
-        /* 背景装饰：增加高级感 */
-        .bg-glow {
-            position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(244, 91, 34, 0.15) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-        }
-
-        /* 主体布局 */
+        /* 主体布局：自适应高度 */
         .hero { 
-            max-width: 650px; 
-            margin: 60px auto; 
-            padding: 0 25px; 
-            text-align: center; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        /* 徽章设计 */
         .badge { 
             background: rgba(244, 91, 34, 0.1); 
             color: var(--betano-orange); 
-            padding: 6px 18px; 
-            border-radius: 30px; 
-            font-size: 13px; 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-size: 11px; 
             font-weight: 800; 
-            margin-bottom: 25px; 
-            display: inline-block; 
+            margin: 0 auto 15px;
+            display: table;
             border: 1px solid rgba(244, 91, 34, 0.3);
-            text-transform: uppercase;
         }
 
         h1 { 
-            font-size: 32px; 
+            font-size: 24px; 
             font-weight: 800;
-            margin-bottom: 20px; 
-            color: #fff;
-            letter-spacing: -0.5px;
+            margin-bottom: 15px; 
+            text-align: center;
+            line-height: 1.2;
         }
         
-        /* 精致卡片：增加边框渐变效果 */
+        /* 精简内容卡片 */
         .content-card { 
             background: var(--card-bg); 
-            padding: 40px; 
-            border-radius: 24px; 
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
+            padding: 20px; 
+            border-radius: 18px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
             border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s ease;
         }
         
+        /* 文案精简：确保三行内说完核心价值 */
         .text-content { 
-            color: var(--text-gray); 
-            font-size: 17px; 
-            text-align: left; 
-            margin-bottom: 35px; 
+            color: #b0b0b0; 
+            font-size: 15px; 
+            text-align: center; 
+            margin-bottom: 20px; 
+            line-height: 1.5;
         }
-        .text-content b { color: #fff; font-weight: 600; }
+        .text-content b { color: #fff; }
 
-        /* 按钮：极致渐变与悬浮光效 */
-        .btn-container { margin-top: 10px; }
+        /* 按钮：在 H5 上更宽、更醒目 */
         .btn { 
             display: block; 
-            width: 100%; 
-            padding: 20px 0; 
+            padding: 16px 0; 
             background: var(--orange-gradient); 
             color: #fff; 
             text-decoration: none; 
-            border-radius: 14px; 
+            border-radius: 12px; 
             font-weight: 800; 
-            font-size: 22px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border: none; 
+            font-size: 18px;
             text-align: center;
             text-transform: uppercase;
-            box-shadow: 0 10px 25px rgba(244, 91, 34, 0.35);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* 按钮闪烁光效 */
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.1);
-            transform: rotate(45deg);
-            transition: 0.5s;
+            box-shadow: 0 6px 20px rgba(244, 91, 34, 0.3);
         }
 
-        .btn:hover { 
-            transform: scale(1.02);
-            box-shadow: 0 15px 35px rgba(244, 91, 34, 0.5); 
-        }
-
-        /* 页脚：保持低调专业 */
+        /* 页脚：极简一行 */
         footer { 
-            margin-top: 80px; 
-            padding: 40px 20px; 
-            background: #000; 
-            font-size: 13px; 
-            color: #666; 
+            padding: 15px 20px; 
+            font-size: 11px; 
+            color: #444; 
             text-align: center; 
         }
-        .footer-links { margin-bottom: 20px; }
-        .footer-links a { color: #888; text-decoration: none; margin: 0 15px; transition: 0.3s; font-weight: 500; }
-        .footer-links a:hover { color: var(--betano-orange); }
-        .responsibility { color: #555; margin-top: 15px; font-size: 11px; }
     </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
-
 <header><div class="logo"><span>BET</span>ANO COMMUNITY</div></header>
 
 <div class="hero">
-    <div class="badge">Acesso Exclusivo 2026</div>
-    <h1>Participe da Nossa Elite Gaming</h1>
+    <div class="badge">OFICIAL 2026</div>
+    <h1>Sua Elite Gaming</h1>
     
     <div class="content-card">
         <div class="text-content">
-            Aqui recomendamos os <b>melhores jogos</b> e as <b>plataformas de pagamento mais seguras</b> do mercado brasileiro. Nossa curadoria garante uma experiência totalmente confiável e transparente para você.
-            <br><br>
-            Clique no botão abaixo para se juntar à nossa comunidade, realize seu <b>cadastro gratuito</b> agora mesmo e escolha seus jogos favoritos. 
-            <br><br>
-            Desejamos a você muita diversão e <b>boa sorte!</b>
+            Acesse os <b>melhores jogos</b> e as <b>plataformas mais seguras</b> do Brasil através da nossa curadoria exclusiva.
         </div>
         
-        <div class="btn-container">
-            <a href="/join" class="btn">COMEÇAR AGORA</a>
-        </div>
+        <a href="/join" class="btn">COMEÇAR AGORA</a>
     </div>
 </div>
 
 <footer>
-    <div class="footer-links">
-        <a href="#">Privacidade</a> | <a href="#">Termos de Uso</a> | <a href="#">Suporte</a>
-    </div>
-    <p>© 2026 Kaizen Gaming. Betano é uma marca registrada sob licença internacional.</p>
-    <p class="responsibility">Jogue com responsabilidade. Apenas para maiores de 18 anos. Conteúdo para fins informativos.</p>
+    © 2026 Kaizen Gaming. Jogue com responsabilidade (18+).
 </footer>
 
 </body>
